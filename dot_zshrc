@@ -10,3 +10,8 @@ zstyle :compinstall filename '/home/tuffen/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+export EDITOR=nvim
+
+eval "$(starship init zsh)"
+eval $(keychain --eval --quiet --noask github_ssh_key)
