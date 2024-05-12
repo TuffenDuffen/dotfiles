@@ -14,4 +14,4 @@ compinit
 export EDITOR=nvim
 
 eval "$(starship init zsh)"
-eval $(keychain --eval --quiet --noask github_ssh_key)
+eval $(keychain --eval --quiet --agents ssh github_ssh_key)
