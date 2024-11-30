@@ -11,6 +11,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+if [ -d "$HOME/.nix-profile/bin" ] ; then
+	PATH="$HOME/.nix-profile/bin:$PATH"
+fi
+
 export EDITOR=nvim
 
 eval "$(starship init zsh)"
