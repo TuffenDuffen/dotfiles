@@ -1,3 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+
+eval $(keychain --eval --quiet --agents ssh github_ssh_key)
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -11,11 +21,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-if [ -d "$HOME/.nix-profile/bin" ] ; then
-	PATH="$HOME/.nix-profile/bin:$PATH"
-fi
-
 export EDITOR=nvim
 
-eval "$(starship init zsh)"
-eval $(keychain --eval --quiet --agents ssh github_ssh_key)
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
