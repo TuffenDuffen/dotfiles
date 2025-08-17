@@ -1,7 +1,10 @@
 #!/bin/sh
 
-date_formatted=$(date "+%a %F %H:%M")
+function get_status 
+{
+	date_formatted=$(date "+%a %F %H:%M")
 
-battery=$(cat /sys/class/power_supply/BAT0/capacity)
+	battery=$(cat /sys/class/power_supply/BAT0/capacity)
 
-echo "${battery}%" $date_formatted
+	echo "${battery}%" $date_formatted
+}
