@@ -213,6 +213,8 @@ bar {
     # The default just shows the current date and time.
     status_command source ~/.config/sway/status.sh; while get_status; do sleep 1; done
 
+    font Hack Nerd Font Mono 11
+
     colors {
         statusline #ffffff
         background #323232
