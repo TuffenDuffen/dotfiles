@@ -7,7 +7,7 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left j
 set $down k
@@ -22,10 +22,15 @@ set $term foot
 # it is set in config.d/50-openSUSE.conf
 set $menu wofi --show drun | xargs swaymsg exec --
 
+default_border none
+
+exec mako
+exec /home/tuffen/.config/sway/inactive_windows_transparency.py -o 0.95
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/nature-wallpaper-1920x1080 fill
 #
 # Example configuration:
 #
@@ -86,7 +91,7 @@ input "1267:12418:DELL0A33:00_04F3:3082_Touchpad" {
 
     # Start your launcher
     bindsym $mod+d exec $menu
-
+ 
     bindsym XF86MonBrightnessDown exec "brightnessctl -n set 5%-"
     bindsym XF86MonBrightnessUp exec "brightnessctl set +5%"
 
@@ -209,11 +214,9 @@ bindsym $mod+r mode "resize"
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command source ~/.config/sway/status.sh; while get_status; do sleep 1; done
+    status_command . ~/.config/sway/status.sh; while get_status; do sleep 1; done
 
-    font Hack Nerd Font Mono 11
+    font AnnotationMono Nerd Font 11
 
     colors {
         statusline #ffffff
