@@ -25,12 +25,12 @@ set $menu wofi --show drun | xargs swaymsg exec --
 default_border none
 
 exec mako
-exec /home/tuffen/.config/sway/inactive_windows_transparency.py -o 0.95
+exec /home/tuffen/.config/sway/inactive_windows_transparency.py -o 0.925
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/nature-wallpaper-1920x1080 fill
+output * bg /home/tuffen/.config/sway/nature-wallpaper-1920x1080.jpg fill
 #
 # Example configuration:
 #
@@ -41,12 +41,12 @@ output * bg /usr/share/backgrounds/nature-wallpaper-1920x1080 fill
 ### Idle configuration
 #
 # Example configuration:
-#
+
 # exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+#           timeout 300 'swaylock -f -c 000000' \
+#           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#           before-sleep 'swaylock -f -c 000000'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -90,10 +90,16 @@ input "1267:12418:DELL0A33:00_04F3:3082_Touchpad" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+space exec $menu
+
+    bindsym $mod+l exec swaylock
  
-    bindsym XF86MonBrightnessDown exec "brightnessctl -n set 5%-"
-    bindsym XF86MonBrightnessUp exec "brightnessctl set +5%"
+    bindsym XF86MonBrightnessDown exec brightnessctl -n set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -169,10 +175,10 @@ input "1267:12418:DELL0A33:00_04F3:3082_Touchpad" {
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+f floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+t focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -216,7 +222,7 @@ bar {
 
     status_command . ~/.config/sway/status.sh; while get_status; do sleep 1; done
 
-    font AnnotationMono Nerd Font 11
+    font AnnotationMono Nerd Font 10
 
     colors {
         statusline #ffffff

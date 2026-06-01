@@ -7,7 +7,7 @@ get_status()
 	battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
 	battery_status=$(cat /sys/class/power_supply/BAT0/status)
 	
-	if [ $battery_status =~ "Charging" ]
+	if [ $battery_status = "Charging" ]
 	then
 		battery_symbol="󰂄"
 	elif [ $battery_level -lt 30 ]
@@ -20,5 +20,11 @@ get_status()
 		battery_symbol="󱊣"
 	fi
 
-	echo "${battery_symbol}${battery_level}%" $date_formatted
+	volume_level=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | tr -dc '[:digit:]' | numfmt)
+	case $(wpctl get-volume @DEFAULT_AUDIO_SINK@) in
+		*MUTED*) volume="󰸈" ;;
+		*) volume=" ${volume_level}%"
+	esac
+
+	echo "${volume} ${battery_symbol}${battery_level}%" $date_formatted
 }

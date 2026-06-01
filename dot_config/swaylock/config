@@ -1,0 +1,5 @@
+image=/home/tuffen/.config/swaylock/lockscreen-1920x1080.jpg
+scaling=fill
+ignore-empty-password
+show-failed-attempts
+indicator-radius=65
