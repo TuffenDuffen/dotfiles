@@ -92,7 +92,7 @@ input "1267:12418:DELL0A33:00_04F3:3082_Touchpad" {
     # Start your launcher
     bindsym $mod+space exec $menu
 
-    bindsym $mod+l exec swaylock
+    bindsym $mod+Alt+l exec swaylock
  
     bindsym XF86MonBrightnessDown exec brightnessctl -n set 5%-
     bindsym XF86MonBrightnessUp exec brightnessctl set +5%
@@ -175,7 +175,7 @@ input "1267:12418:DELL0A33:00_04F3:3082_Touchpad" {
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+f floating toggle
+    bindsym $mod+Alt+f floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+t focus mode_toggle
